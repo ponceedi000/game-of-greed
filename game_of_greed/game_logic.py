@@ -45,18 +45,21 @@ class GameLogic:
             elif i != 1 and count[i] == 3:
                 score += i * 100
 
+        # Handles four of a kind
         for i in range(1, 7):
             if i == 1 and count[1] == 4:
                 score += 2000
             elif i != 1 and count[i] == 4:
               score += i * 100 * 2
 
+        # Handles five of a kind
         for i in range(1, 7):
             if i == 1 and count[1] == 5:
                 score += 3000
             elif i != 1 and count[i] == 5:
               score += i * 100 * 3 
-
+              
+        # Handles six of a kind
         for i in range(1, 7):
             if i == 1 and count[1] == 6:
                 score += 4000
