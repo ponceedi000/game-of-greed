@@ -93,7 +93,7 @@ def test_six_ones():
     expected = 4000
     assert actual == expected
 
-@pytest.mark.skip('Pending')
+# @pytest.mark.skip('Pending')
 @pytest.mark.parametrize(
     "test_input,expected",
     [
