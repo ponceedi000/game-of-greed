@@ -1,38 +1,54 @@
-from random import randint
-# from game_of_greed.game_logic import GameLogic 
-from game_logic import GameLogic 
+from random import choice, randint
+from game_of_greed.game_logic import GameLogic
+from game_of_greed.banker import Banker
+# from game_logic import GameLogic 
 
 def default_roller(dice=6):
     return GameLogic.roll_dice(dice)
 
 class Game:
-    def play(self,roller=default_roller):
+
+    def __init__(self,rounds=1,dice_quantity=6):
+        self.banker = Banker()
+        self.dice_quantity = dice_quantity
+        self.rounds = rounds
+        self.start = True
+
+    def play(self,roller=GameLogic.roll_dice):
+        self.default_roller = roller
         # Line 10 - 17 handles first test
         print('Welcome to Game of Greed')
         print('(y)es to play or (n)o to decline')
         while True:
-            count = 0
             choice = input('> ')
             if choice == 'n':
                print('OK. Maybe another time')
                break
             # Test two passes within else statement
             elif choice == 'y':
-                count += 1
-                roll = roller(self)
-                roller_str = ''
-                for num in roll:
-                    roller_str += str(num) + ' '
-                print(f'Starting round {count}')
-                print(f'Rolling {6} dice...')
-                print(f'*** {roller_str}***')
-                print('Enter dice to keep, or (q)uit:')
-                quit = input('> ' )
-                print('Thanks for playing. You earned 0 points' if quit == 'q' else None) 
-
+                self.dice_quantity = 6
+                self.start_round(roller)
                 # Test three solution goes below
 
+    def start_round(self,roller):
+        while self.status and self.banker.balance <= 10000:
+                
+                print(f'Starting round {self.rounds}')
+                print(f'Rolling {self.dice_quantity} dice...')
+                roll = roller(self.dice_quantity)
+                roller_str = ''
+                for num in roll:
+                 roller_str += str(num) + " "
+                print(f'*** {roller_str}***')
+                print('Enter dice to keep, or (q)uit:')
+                choice = input('> ' )
+                if choice == 'q':
+                    print('Thanks for playing. You earned 0 points')
+                else:
+                    
+
         
+
     
 if __name__ == "__main__":
         # rolls = [(4,),(4,),(5,),(2,),(3,),(1,)]
