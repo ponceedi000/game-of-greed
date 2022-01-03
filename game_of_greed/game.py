@@ -16,7 +16,7 @@ class Game:
 
     def play(self,roller=GameLogic.roll_dice):
         self.default_roller = roller
-        # Line 10 - 17 handles first test
+        # handles first test
         print('Welcome to Game of Greed')
         print('(y)es to play or (n)o to decline')
         while True:
@@ -45,6 +45,7 @@ class Game:
                 if choice == 'q':
                     print('Thanks for playing. You earned 0 points')
                 else:
+                    pass
                     
 
         
