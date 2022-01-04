@@ -46,11 +46,6 @@ class Game:
             for num in roll:
                 roller_str += str(num) + " "
             print(f'*** {roller_str}***')
-            
-            if GameLogic.calculate_score(roll) == 0:
-                print("Farkled")
-                continue
-
             print('Enter dice to keep, or (q)uit:')
             choice = input('> ' )
 
