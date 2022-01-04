@@ -15,6 +15,8 @@
 - Python 3
 - Pytest
 - Poetry
+- sys
+- choice, randint
 
 ## Change Log
 
@@ -23,12 +25,14 @@
 ## Credit and Collaborations
 
 - Brandon Mitzutani and Clarissa Pamonicutt
+- Alex Payne
 
 ## Resources
 
 - [Python sorted()](https://www.w3schools.com/python/ref_func_sorted.asp)
 - [python.org - collections](https://docs.python.org/3/library/collections.html#collections.Counter.most_common)
 - [Stack Overflow - counter](https://stackoverflow.com/questions/15772092/python-collections-counter)
+- [Python Exit Commands](https://www.geeksforgeeks.org/python-exit-commands-quit-exit-sys-exit-and-os-_exit/)
 
 ## Name of feature: calculate score method
 
@@ -49,3 +53,13 @@
 - Finish time: 9:00pm
 
 - Actual time needed to complete: 1 hour
+
+## Name of feature: Play for first 2 rounds
+
+- Estimate of time needed to complete: 6 hours
+
+- Start time: 8:00pm (Dec 28th)
+
+- Finish time: 4:30pm (Jan 3rd) (night class)
+
+- Actual time needed to complete: 14 hours
