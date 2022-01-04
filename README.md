@@ -4,6 +4,7 @@
 **Version**: 1.0.0
 
 - PR: [https://github.com/ponceedi000/game-of-greed/pull/3](https://github.com/ponceedi000/game-of-greed/pull/3)
+- - PR: [https://github.com/ponceedi000/game-of-greed/pull/6](https://github.com/ponceedi000/game-of-greed/pull/6)
 
 ## Overview
 
