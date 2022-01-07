@@ -33,6 +33,43 @@ class Game:
                 self.start_round(roller)
                 # Test three solution goes below
 
+    def bank_earned_points(self, roller):
+        print(f"You banked {self.banker.shelved} points in round {self.rounds}")
+        self.banker.bank()
+        print(f"Total score is {self.banker.balance} points")        
+        if self.banker.balance >= 10000:
+            print("WINNER")
+        else:
+            self.start_round(roller)            
+
+
+    def validate_dice(self, rolled_dice, roller):
+        if GameLogic.calculate_score(rolled_dice) == 0:
+            print("****************************************")
+            print("**        Zilch!!! Round over         **")
+            print("****************************************")
+            self.banker.clear_shelf()
+            self.bank_earned_points()
+        else:
+            print("Enter dice to keep, or (q)uit:")
+            choice = input("> ")
+            if choice:
+                choice = choice.replace(" ", "")
+            else:
+                self.validate_dice(rolled_dice, roller)
+
+            if choice == "q":
+                print(f"Thanks for playing. You earned {self.banker.balance} points")
+                sys.exit()
+            # COME UP WITH LOGIC THAT ENSURES CHEATING IS HANDLED PROPERLY
+            # CODE BLOCK GOES HERE
+            # ---
+            # ---
+            else:
+                print("Cheater!!! Or possibly made a typo...")
+                # NEED TO SHOW ROLLED DICE. CODE ALREADY CREATED IN start_round method. REFACTOR SAID CODE AND INVOKE HERE
+                return self.validate_dice(rolled_dice, roller)
+
     def start_round(self,roller):
 
         while self.status and self.banker.balance <= 10000:
