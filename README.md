@@ -64,3 +64,14 @@
 - Finish time: 4:30pm (Jan 3rd) (night class)
 
 - Actual time needed to complete: 14 hours
+
+## Name of feature: Bot
+
+- Estimate of time needed to complete: 2 hours
+
+- Start time: 1:30pm
+
+- Finish time: 2:30pm
+
+- Actual time needed to complete: 1 hour
+
