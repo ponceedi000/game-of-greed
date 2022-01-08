@@ -18,20 +18,26 @@ class Game:
 
     def default_roller(self):
         GameLogic.roll_dice(self.dice_quantity)
+    
+    def welcome_message(self):
+        print('Welcome to Game of Greed')
 
     def play(self,roller=GameLogic.roll_dice):
         self.default_roller = roller
-        print('Welcome to Game of Greed')
+        self.welcome_message()
         print('(y)es to play or (n)o to decline')
-        while True:
-            choice = input('> ')
-            if choice == 'n':
-               print('OK. Maybe another time')
-               break
-            elif choice == 'y':
-                # self.dice_quantity = 6
-                self.start_round(roller)
-                # Test three solution goes below
+        
+        choice = input('> ')
+        if choice == 'n':
+            print('OK. Maybe another time')
+            sys.exit()
+        elif choice == 'y':
+            self.start_round(roller)
+            
+
+    def quit_game(self):
+        print(f'Thanks for playing. You earned {self.banker.balance} points')
+        sys.exit()         
 
     def bank_earned_points(self, roller):
         print(f"You banked {self.banker.shelved} points in round {self.rounds}")
@@ -50,6 +56,7 @@ class Game:
             print("****************************************")
             self.banker.clear_shelf()
             self.bank_earned_points()
+            
         else:
             print("Enter dice to keep, or (q)uit:")
             choice = input("> ")
@@ -59,16 +66,20 @@ class Game:
                 self.validate_dice(rolled_dice, roller)
 
             if choice == "q":
-                print(f"Thanks for playing. You earned {self.banker.balance} points")
-                sys.exit()
-            # COME UP WITH LOGIC THAT ENSURES CHEATING IS HANDLED PROPERLY
-            # CODE BLOCK GOES HERE
-            # ---
-            # ---
-            else:
-                print("Cheater!!! Or possibly made a typo...")
-                # NEED TO SHOW ROLLED DICE. CODE ALREADY CREATED IN start_round method. REFACTOR SAID CODE AND INVOKE HERE
-                return self.validate_dice(rolled_dice, roller)
+                self.quit_game()
+
+            while True:
+                keeper_values = []
+                for char in choice:
+                    if char.isnumeric():
+                        keeper_values.append(int(char))
+
+                if GameLogic.validate_keepers(rolled_dice, keeper_values):
+                    return keeper_values
+                else:
+                    print("Cheater!!! Or possibly made a typo...")
+                    # NEED TO SHOW ROLLED DICE. CODE ALREADY CREATED IN start_round method. REFACTOR SAID CODE AND INVOKE HERE
+                    return self.validate_dice(rolled_dice, roller)
 
     def start_round(self,roller):
 
@@ -87,8 +98,7 @@ class Game:
             choice = input('> ' )
 
             if choice == 'q':
-                print(f'Thanks for playing. You earned {self.banker.balance} points')
-                sys.exit()
+                self.quit_game()
             else: 
                 # WORKED WITH ALEX FOR BELOW LOGIC (ELSE)
                 user_response = tuple(map(int, list(choice)))
@@ -100,32 +110,25 @@ class Game:
                 print("(r)oll again, (b)ank your points or (q)uit:")
                 choice = input("> ")
 
-            if choice == "b":
-                self.banker.bank()
-                self.dice_quantity = 6
-                print(f"You banked {score} points in round {self.rounds}")
-                print(f"Total score is {self.banker.balance} points")
- 
-            elif choice == "r":
-                if self.dice_quantity == 0:
-                    self.dice_quantity = 6
-                continue # reroll with the remaining dice on the board
-            
-            elif choice == "q":
-                print(f"Thanks for playing. You earned {self.banker.balance} points")          
-                sys.exit()
+            self.bank_reroll_quit()
 
+    def bank_reroll_quit(self,roller):
+        if choice == "b":
+            self.banker.bank()
+            self.dice_quantity = 6
+            print(f"You banked {self.banker.shelved} points in round {self.rounds}")
+            print(f"Total score is {self.banker.balance} points")
+
+        elif choice == "r":
+            if self.dice_quantity == 0:
+                self.dice_quantity = 6
         
+        elif choice == "q":
+            self.quit_game()
 
     
 if __name__ == "__main__":
-        # rolls = [(4,),(4,),(5,),(2,),(3,),(1,)]
-    # rolls = [('4','4','5','2','3','1')]
-   
-    # def mock_roller():
-    #     # return rolls.pop(0) if rolls else default_roller()
-    #     return (4,3,1,1)
-    # Game.play(mock_roller)
+
     game = Game()
     game.play()
     

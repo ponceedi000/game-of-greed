@@ -3,16 +3,6 @@ from collections import Counter
 
 
 class GameLogic:
-    def __init__(self):
-        pass
-# GAME INTRODUCTION --- TO BE FINISHED AFTER MVP'S HAVE BEEN MET
-    # def game_intro():
-    #     user_response = {'yes', 'no'}
-    #     welcome_message = 'Welcome to Game Of Greed'
-    #     if user_response[0]:
-    #       print(f'{welcome_message} do you want to play?')
-    #     else:
-    #         print('ok')
 
     @staticmethod
     def roll_dice(dice_roll):
@@ -68,4 +58,38 @@ class GameLogic:
 
         return score
 
+    @staticmethod
+    def validate_keepers(roll, keepers):
+        # version_3
+        # pro tip: you can do some math operations with counters
+        # check https://docs.python.org/3/library/collections.html#collections.Counter
+        keeper_count = Counter(keepers)
+        roll_count = Counter(roll)
 
+        # a "valid" result is an empty Counter result
+        game_result = keeper_count - roll_count
+
+        # an empty Counter is falsy, so use "not" to flip it
+        return not game_result
+
+    @staticmethod
+    def get_scorers(dice):
+        # version_3
+
+        all_dice_score = GameLogic.calculate_score(dice)
+
+        if all_dice_score == 0:
+            return tuple()
+
+        scorers = []
+
+        # for i in range(len(dice)):
+
+        for i, val in enumerate(dice):
+            sub_roll = dice[:i] + dice[i + 1 :]
+            sub_score = GameLogic.calculate_score(sub_roll)
+
+            if sub_score != all_dice_score:
+                scorers.append(val)
+
+        return tuple(scorers)
