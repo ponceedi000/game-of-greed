@@ -142,33 +142,37 @@ class MiddlingMargaret(BaseBot):
 
         return "r"
 
-class DaringDarla(BaseBot):
-    """DaringDarla rolls whenever more than 1 dice remaining """
+# class DaringDarla(BaseBot):
+#     """DaringDarla rolls whenever more than 1 dice remaining """
 
-    def _roll_bank_or_quit(self):
-        if self.dice_remaining == 1:
-            return "b"
+#     def _roll_bank_or_quit(self):
+#         if self.dice_remaining == 1:
+#             return "b"
 
-        return "r"
+#         return "r"
 
-class Roger(BaseBot):
-    """Roger rolls whenever more than 2 dice remaining """
+# class Roger(BaseBot):
+#     """Roger rolls whenever more than 2 dice remaining """
 
-    def _roll_bank_or_quit(self):
-        if self.unbanked_points >= 800:
-            return "b"
+#     def _roll_bank_or_quit(self):
+#         if self.unbanked_points >= 800:
+#             return "b"
 
-        return "r"
+#         return "r"
 
 class YourBot(BaseBot):
+  # Worked with Brandon and Clarissa for Lab-09
     def _roll_bank_or_quit(self):
-        """your logic here"""
-        return "b"
+        if self.unbanked_points >= 350 and self.dice_remaining == 1:
+          return "b"
+        elif self.unbanked_points >= 250 and self.dice_remaining >= 2:
+          return "b"
+        return "r"
 
 if __name__ == "__main__":
     num_games = 1000
-    # NervousNellie.play(num_games)
-    # MiddlingMargaret.play(num_games)
-    Roger.play(num_games)
-    DaringDarla.play(num_games)
-    # YourBot.play(num_games)
+    NervousNellie.play(num_games)
+    MiddlingMargaret.play(num_games)
+    # Roger.play(num_games)
+    # DaringDarla.play(num_games)
+    YourBot.play(num_games)
