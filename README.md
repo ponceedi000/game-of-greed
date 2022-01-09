@@ -5,6 +5,7 @@
 
 - PR: [https://github.com/ponceedi000/game-of-greed/pull/3](https://github.com/ponceedi000/game-of-greed/pull/3)
 - - PR: [https://github.com/ponceedi000/game-of-greed/pull/6](https://github.com/ponceedi000/game-of-greed/pull/6)
+- PR: [https://github.com/ponceedi000/game-of-greed/pull/9](https://github.com/ponceedi000/game-of-greed/pull/9)
 
 ## Overview
 
@@ -22,11 +23,13 @@
 ## Change Log
 
 12-23-2021 9:00pm - Program passes 66/67 tests.
+01-08-2022 6:00pm - Program passes 78/86 tests.
 
 ## Credit and Collaborations
 
 - Brandon Mitzutani and Clarissa Pamonicutt
 - Alex Payne
+- Roger Huba
 
 ## Resources
 
@@ -34,6 +37,7 @@
 - [python.org - collections](https://docs.python.org/3/library/collections.html#collections.Counter.most_common)
 - [Stack Overflow - counter](https://stackoverflow.com/questions/15772092/python-collections-counter)
 - [Python Exit Commands](https://www.geeksforgeeks.org/python-exit-commands-quit-exit-sys-exit-and-os-_exit/)
+- [Python String isnumeric() Method](https://www.w3schools.com/python/ref_string_isnumeric.asp)
 
 ## Name of feature: calculate score method
 
@@ -64,3 +68,13 @@
 - Finish time: 4:30pm (Jan 3rd) (night class)
 
 - Actual time needed to complete: 14 hours
+
+- ## Name of feature: Cheating mitigation
+
+- Estimate of time needed to complete: 6 hours
+
+- Start time: 8:00pm (Jan 5th)
+
+- Finish time: 6:00pm (Jan 8th) (night class)
+
+- Actual time needed to complete: Roughly 12 hours
